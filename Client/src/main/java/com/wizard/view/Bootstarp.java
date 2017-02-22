@@ -1,15 +1,31 @@
 package com.wizard.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
+import javax.swing.JLabel;
 
 public class Bootstarp extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel panel_left;
+	private JPanel panel_url;
+	private JTextField text_url;
+	private JButton button_down;
+	private JPanel panel_center;
+	private JPanel panel_right;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -32,11 +48,41 @@ public class Bootstarp extends JFrame {
 	 */
 	public Bootstarp() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 1000, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		panel_left = new JPanel();
+		panel_left.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u6211\u7684\u4E0B\u8F7D", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		contentPane.add(panel_left, BorderLayout.WEST);
+		panel_left.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		panel_url = new JPanel();
+		panel_left.add(panel_url);
+		
+		text_url = new JTextField();
+		panel_url.add(text_url);
+		text_url.setPreferredSize(new Dimension(200, 30));
+		
+		button_down = new JButton("下载");
+		panel_url.add(button_down);
+		button_down.setPreferredSize(new Dimension(60, 30));
+		
+		panel_center = new JPanel();
+		panel_center.setBorder(new TitledBorder(null, "IP\u5217\u8868", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		contentPane.add(panel_center, BorderLayout.CENTER);
+		
+		panel_right = new JPanel();
+		panel_right.setBorder(new TitledBorder(null, "\u8FDC\u7A0B\u4E0B\u8F7D", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		contentPane.add(panel_right, BorderLayout.EAST);
+		
+		lblNewLabel = new JLabel("New label");
+		lblNewLabel.setPreferredSize(new Dimension(260, 30));
+		panel_right.add(lblNewLabel);
+		setLocationRelativeTo(null); 
+		setResizable(false);
 	}
 
 }

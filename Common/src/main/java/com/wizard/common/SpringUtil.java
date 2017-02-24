@@ -2,8 +2,6 @@ package com.wizard.common;
 
 import org.springframework.context.ApplicationContext;
 
-import com.wizard.msg.Message;
-
 /**
  * Spring工具类
  * @author hulujie

@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.wizard.common.SpringUtil;
 

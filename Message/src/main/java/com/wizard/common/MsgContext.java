@@ -1,7 +1,7 @@
 package com.wizard.common;
 
-import java.io.File;
-import java.net.URL;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ReferenceConfig;
@@ -9,32 +9,7 @@ import com.wizard.msg.Message;
 
 public class MsgContext {
 
-	/**
-	 * 获得系统安装路径
-	 * 
-	 * @return
-	 */
-	public static String getRootPath() {
-
-		URL url = MsgContext.class.getProtectionDomain().getCodeSource().getLocation();
-
-		String filePath = null;
-
-		try {
-			filePath = java.net.URLDecoder.decode(url.getPath(), "utf-8");
-		} catch (Exception e) {
-
-		}
-
-		if (filePath.endsWith(".jar"))
-			filePath = filePath.substring(0, filePath.lastIndexOf("/") + 1);
-
-		File file = new java.io.File(filePath);
-		filePath = file.getAbsolutePath();
-
-		return filePath;
-	}
-	
+	private final Logger logger = LoggerFactory.getLogger(MsgContext.class);
 	
 	private static Message message;
 	
@@ -44,12 +19,10 @@ public class MsgContext {
 			synchronized (Message.class) {
 
 				if (message == null) {
-//					logger.info("初始化PosRemoteCardService!");
 
 					try {
 						message = createRef(Message.class,"");
 					} catch (RuntimeException e) {
-//						logger.error("CardPosService初始化失败: ", e);
 						throw e;
 					}
 				}
@@ -74,7 +47,7 @@ public class MsgContext {
 		else
 		{
 			//测试临时使用
-			ip="localhost";
+			ip="10.17.171.12";
 			port="20003";
 			connectTimeout=10000;
 			

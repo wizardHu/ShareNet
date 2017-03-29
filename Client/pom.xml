@@ -8,9 +8,15 @@
 
 	<dependencies>
 		<dependency>
-			 <groupId>com.common</groupId>
-			  <artifactId>Common</artifactId>
-			  <version>0.0.1-SNAPSHOT</version>
+			<groupId>com.common</groupId>
+			<artifactId>Common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.message</groupId>
+			<artifactId>Message</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

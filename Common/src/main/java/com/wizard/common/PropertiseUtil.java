@@ -9,7 +9,14 @@ public class PropertiseUtil {
 	@Value("${ip_count}")
 	private String ipCount;
 	
+	@Value("${port}")
+	private String port;
+	
 	public String getIpCount() {
 		return ipCount;
+	}
+	
+	public String getPort() {
+		return port;
 	}
 }

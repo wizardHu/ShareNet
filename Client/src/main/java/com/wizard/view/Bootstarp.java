@@ -7,17 +7,25 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
-import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
-import javax.swing.JLabel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
+
+import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
+import com.wizard.common.SpringUtil;
 
 public class Bootstarp extends JFrame {
 
+	private final Logger logger = LoggerFactory.getLogger(Bootstarp.class);
 	private JPanel contentPane;
 	private JPanel panel_left;
 	private JPanel panel_url;
@@ -47,6 +55,13 @@ public class Bootstarp extends JFrame {
 	 * Create the frame.
 	 */
 	public Bootstarp() {
+		
+		initView();
+		initLog();
+		initSpring();
+	}
+
+	private void initView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 600);
 		contentPane = new JPanel();
@@ -83,6 +98,29 @@ public class Bootstarp extends JFrame {
 		panel_right.add(lblNewLabel);
 		setLocationRelativeTo(null); 
 		setResizable(false);
+		
+	}
+	
+	private void initLog(){
+		PropertyConfigurator.configure("conf/log4j.properties");
+	}
+	
+	/**
+	 * 启动spring
+	 */
+	private void initSpring() {
+		
+		ApplicationContext ctx;
+		try {
+			ctx = new FileSystemXmlApplicationContext("/conf/spring.xml");
+		} catch (BeansException e) {
+
+			logger.error("initSpring() error: ", e);
+
+			throw e;
+		}
+		logger.info("Spring容器启动完成！");
+		SpringUtil.setSpringContext(ctx);
 	}
 
 }

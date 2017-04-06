@@ -245,3 +245,187 @@ return extension.getExecutor(arg0);
 [2017-02-24 16:48:08,114] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.receive:203] -  [DUBBO] Receive multicast message: subscribe provider://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&category=configurators&check=false&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=8492&side=provider&timestamp=1487926087858 from /10.17.173.30:1234, dubbo version: 2.5.3, current host: 127.0.0.1
 [2017-02-24 16:48:09,114] [WARN ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.notify:418] -  [DUBBO] Ignore empty notify urls for subscribe url provider://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&category=configurators&check=false&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=8492&side=provider&timestamp=1487926087858, dubbo version: 2.5.3, current host: 127.0.0.1
 [2017-02-24 16:48:09,120] [INFO ] [com.wizard.view.Bootstarp.initSpring:122] - Spring容器启动完成！
+[2017-03-30 11:23:14,601] [INFO ] [org.springframework.context.support.FileSystemXmlApplicationContext.prepareRefresh:510] - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@5b7fd935: startup date [Thu Mar 30 11:23:14 CST 2017]; root of context hierarchy
+[2017-03-30 11:23:14,660] [INFO ] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions:315] - Loading XML bean definitions from file [E:\shareNet\shareNet\Client\conf\spring.xml]
+[2017-03-30 11:23:14,850] [INFO ] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions:315] - Loading XML bean definitions from file [E:\shareNet\shareNet\Client\conf\dubbo-services.xml]
+[2017-03-30 11:23:14,941] [INFO ] [com.alibaba.dubbo.common.logger.LoggerFactory.?:?] - using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+[2017-03-30 11:23:15,103] [INFO ] [org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons:577] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2f82658f: defining beans [hello,com.alibaba.dubbo.config.RegistryConfig,dubbo,com.wizard.msg.Message,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+[2017-03-30 11:23:15,264] [DEBUG] [com.alibaba.dubbo.common.extension.ExtensionLoader.createAdaptiveExtensionClassCode:943] -  [DUBBO] package com.alibaba.dubbo.rpc;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Protocol$Adpative implements com.alibaba.dubbo.rpc.Protocol {
+public void destroy() {throw new UnsupportedOperationException("method public abstract void com.alibaba.dubbo.rpc.Protocol.destroy() of interface com.alibaba.dubbo.rpc.Protocol is not adaptive method!");
+}
+public int getDefaultPort() {throw new UnsupportedOperationException("method public abstract int com.alibaba.dubbo.rpc.Protocol.getDefaultPort() of interface com.alibaba.dubbo.rpc.Protocol is not adaptive method!");
+}
+public com.alibaba.dubbo.rpc.Invoker refer(java.lang.Class arg0, com.alibaba.dubbo.common.URL arg1) throws java.lang.Class {
+if (arg1 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg1;
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.Protocol) name from url(" + url.toString() + ") use keys([protocol])");
+com.alibaba.dubbo.rpc.Protocol extension = (com.alibaba.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.refer(arg0, arg1);
+}
+public com.alibaba.dubbo.rpc.Exporter export(com.alibaba.dubbo.rpc.Invoker arg0) throws com.alibaba.dubbo.rpc.Invoker {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.Protocol) name from url(" + url.toString() + ") use keys([protocol])");
+com.alibaba.dubbo.rpc.Protocol extension = (com.alibaba.dubbo.rpc.Protocol)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.Protocol.class).getExtension(extName);
+return extension.export(arg0);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,358] [DEBUG] [com.alibaba.dubbo.common.extension.ExtensionLoader.createAdaptiveExtensionClassCode:943] -  [DUBBO] package com.alibaba.dubbo.rpc;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory {
+public java.lang.Object getProxy(com.alibaba.dubbo.rpc.Invoker arg0) throws com.alibaba.dubbo.rpc.Invoker {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url(" + url.toString() + ") use keys([proxy])");
+com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getProxy(arg0);
+}
+public com.alibaba.dubbo.rpc.Invoker getInvoker(java.lang.Object arg0, java.lang.Class arg1, com.alibaba.dubbo.common.URL arg2) throws java.lang.Object {
+if (arg2 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg2;
+String extName = url.getParameter("proxy", "javassist");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url(" + url.toString() + ") use keys([proxy])");
+com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+return extension.getInvoker(arg0, arg1, arg2);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,414] [INFO ] [com.alibaba.dubbo.config.AbstractConfig.onApplicationEvent:107] -  [DUBBO] The service ready on spring started. service: com.wizard.msg.Message, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,519] [DEBUG] [com.alibaba.dubbo.common.extension.ExtensionLoader.createAdaptiveExtensionClassCode:943] -  [DUBBO] package com.alibaba.dubbo.validation;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Validation$Adpative implements com.alibaba.dubbo.validation.Validation {
+public com.alibaba.dubbo.validation.Validator getValidator(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("validation", "jvalidation");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.validation.Validation) name from url(" + url.toString() + ") use keys([validation])");
+com.alibaba.dubbo.validation.Validation extension = (com.alibaba.dubbo.validation.Validation)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.validation.Validation.class).getExtension(extName);
+return extension.getValidator(arg0);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,532] [DEBUG] [com.alibaba.dubbo.common.extension.ExtensionLoader.createAdaptiveExtensionClassCode:943] -  [DUBBO] package com.alibaba.dubbo.monitor;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class MonitorFactory$Adpative implements com.alibaba.dubbo.monitor.MonitorFactory {
+public com.alibaba.dubbo.monitor.Monitor getMonitor(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.monitor.MonitorFactory) name from url(" + url.toString() + ") use keys([protocol])");
+com.alibaba.dubbo.monitor.MonitorFactory extension = (com.alibaba.dubbo.monitor.MonitorFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.monitor.MonitorFactory.class).getExtension(extName);
+return extension.getMonitor(arg0);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,545] [DEBUG] [com.alibaba.dubbo.common.extension.ExtensionLoader.createAdaptiveExtensionClassCode:943] -  [DUBBO] package com.alibaba.dubbo.cache;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class CacheFactory$Adpative implements com.alibaba.dubbo.cache.CacheFactory {
+public com.alibaba.dubbo.cache.Cache getCache(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("cache", "lru");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.cache.CacheFactory) name from url(" + url.toString() + ") use keys([cache])");
+com.alibaba.dubbo.cache.CacheFactory extension = (com.alibaba.dubbo.cache.CacheFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.cache.CacheFactory.class).getExtension(extName);
+return extension.getCache(arg0);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,557] [INFO ] [com.alibaba.dubbo.config.AbstractConfig.exportLocal:510] -  [DUBBO] Export dubbo service com.wizard.msg.Message to local registry, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,557] [INFO ] [com.alibaba.dubbo.config.AbstractConfig.doExportUrlsFor1Protocol:470] -  [DUBBO] Export dubbo service com.wizard.msg.Message to url dubbo://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,557] [INFO ] [com.alibaba.dubbo.config.AbstractConfig.doExportUrlsFor1Protocol:481] -  [DUBBO] Register dubbo service com.wizard.msg.Message url dubbo://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472 to registry registry://224.1.1.1:1234/com.alibaba.dubbo.registry.RegistryService?application=hello&dubbo=2.5.3&pid=7580&registry=multicast&timestamp=1490844195421, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,563] [DEBUG] [com.alibaba.dubbo.common.extension.ExtensionLoader.createAdaptiveExtensionClassCode:943] -  [DUBBO] package com.alibaba.dubbo.rpc.cluster;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Cluster$Adpative implements com.alibaba.dubbo.rpc.cluster.Cluster {
+public com.alibaba.dubbo.rpc.Invoker join(com.alibaba.dubbo.rpc.cluster.Directory arg0) throws com.alibaba.dubbo.rpc.cluster.Directory {
+if (arg0 == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.cluster.Directory argument == null");
+if (arg0.getUrl() == null) throw new IllegalArgumentException("com.alibaba.dubbo.rpc.cluster.Directory argument getUrl() == null");com.alibaba.dubbo.common.URL url = arg0.getUrl();
+String extName = url.getParameter("cluster", "failover");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.cluster.Cluster) name from url(" + url.toString() + ") use keys([cluster])");
+com.alibaba.dubbo.rpc.cluster.Cluster extension = (com.alibaba.dubbo.rpc.cluster.Cluster)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.rpc.cluster.Cluster.class).getExtension(extName);
+return extension.join(arg0);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,572] [DEBUG] [com.alibaba.dubbo.common.extension.ExtensionLoader.createAdaptiveExtensionClassCode:943] -  [DUBBO] package com.alibaba.dubbo.registry;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class RegistryFactory$Adpative implements com.alibaba.dubbo.registry.RegistryFactory {
+public com.alibaba.dubbo.registry.Registry getRegistry(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = ( url.getProtocol() == null ? "dubbo" : url.getProtocol() );
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.registry.RegistryFactory) name from url(" + url.toString() + ") use keys([protocol])");
+com.alibaba.dubbo.registry.RegistryFactory extension = (com.alibaba.dubbo.registry.RegistryFactory)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.registry.RegistryFactory.class).getExtension(extName);
+return extension.getRegistry(arg0);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,594] [DEBUG] [com.alibaba.dubbo.common.extension.ExtensionLoader.createAdaptiveExtensionClassCode:943] -  [DUBBO] package com.alibaba.dubbo.remoting;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Transporter$Adpative implements com.alibaba.dubbo.remoting.Transporter {
+public com.alibaba.dubbo.remoting.Server bind(com.alibaba.dubbo.common.URL arg0, com.alibaba.dubbo.remoting.ChannelHandler arg1) throws com.alibaba.dubbo.common.URL {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("server", url.getParameter("transporter", "netty"));
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.remoting.Transporter) name from url(" + url.toString() + ") use keys([server, transporter])");
+com.alibaba.dubbo.remoting.Transporter extension = (com.alibaba.dubbo.remoting.Transporter)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.remoting.Transporter.class).getExtension(extName);
+return extension.bind(arg0, arg1);
+}
+public com.alibaba.dubbo.remoting.Client connect(com.alibaba.dubbo.common.URL arg0, com.alibaba.dubbo.remoting.ChannelHandler arg1) throws com.alibaba.dubbo.common.URL {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("client", url.getParameter("transporter", "netty"));
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.remoting.Transporter) name from url(" + url.toString() + ") use keys([client, transporter])");
+com.alibaba.dubbo.remoting.Transporter extension = (com.alibaba.dubbo.remoting.Transporter)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.remoting.Transporter.class).getExtension(extName);
+return extension.connect(arg0, arg1);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,614] [DEBUG] [com.alibaba.dubbo.common.extension.ExtensionLoader.createAdaptiveExtensionClassCode:943] -  [DUBBO] package com.alibaba.dubbo.remoting;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class Dispatcher$Adpative implements com.alibaba.dubbo.remoting.Dispatcher {
+public com.alibaba.dubbo.remoting.ChannelHandler dispatch(com.alibaba.dubbo.remoting.ChannelHandler arg0, com.alibaba.dubbo.common.URL arg1) {
+if (arg1 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg1;
+String extName = url.getParameter("dispatcher", url.getParameter("dispather", url.getParameter("channel.handler", "all")));
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.remoting.Dispatcher) name from url(" + url.toString() + ") use keys([dispatcher, dispather, channel.handler])");
+com.alibaba.dubbo.remoting.Dispatcher extension = (com.alibaba.dubbo.remoting.Dispatcher)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.remoting.Dispatcher.class).getExtension(extName);
+return extension.dispatch(arg0, arg1);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,627] [DEBUG] [com.alibaba.dubbo.common.extension.ExtensionLoader.createAdaptiveExtensionClassCode:943] -  [DUBBO] package com.alibaba.dubbo.common.threadpool;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class ThreadPool$Adpative implements com.alibaba.dubbo.common.threadpool.ThreadPool {
+public java.util.concurrent.Executor getExecutor(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("threadpool", "fixed");
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.common.threadpool.ThreadPool) name from url(" + url.toString() + ") use keys([threadpool])");
+com.alibaba.dubbo.common.threadpool.ThreadPool extension = (com.alibaba.dubbo.common.threadpool.ThreadPool)ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.common.threadpool.ThreadPool.class).getExtension(extName);
+return extension.getExecutor(arg0);
+}
+}, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,659] [DEBUG] [org.jboss.netty.channel.socket.nio.NioProviderMetadata.debug:70] -  [DUBBO] Using the autodetected NIO constraint level: 0, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,702] [INFO ] [com.alibaba.dubbo.remoting.transport.AbstractServer.<init>:69] -  [DUBBO] Start NettyServer bind /0.0.0.0:20003, export /10.17.173.30:20003, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,731] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.register:302] -  [DUBBO] Register: dubbo://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,731] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.broadcast:234] -  [DUBBO] Send broadcast message: register dubbo://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472 to /224.1.1.1:1234, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,731] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.receive:203] -  [DUBBO] Receive multicast message: register dubbo://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472 from /10.17.173.30:1234, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,732] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.subscribe:325] -  [DUBBO] Subscribe: provider://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&category=configurators&check=false&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,732] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.broadcast:234] -  [DUBBO] Send broadcast message: subscribe provider://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&category=configurators&check=false&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472 to /224.1.1.1:1234, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:15,733] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.receive:203] -  [DUBBO] Receive multicast message: subscribe provider://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&category=configurators&check=false&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472 from /10.17.173.30:1234, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:16,733] [WARN ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.notify:418] -  [DUBBO] Ignore empty notify urls for subscribe url provider://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&category=configurators&check=false&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:16,739] [INFO ] [com.wizard.view.Bootstarp.initSpring:122] - Spring容器启动完成！
+[2017-03-30 11:23:20,651] [INFO ] [com.alibaba.dubbo.config.AbstractConfig.run:450] -  [DUBBO] Run shutdown hook now., dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,652] [INFO ] [com.alibaba.dubbo.registry.support.AbstractRegistryFactory.destroyAll:63] -  [DUBBO] Close all registries [multicast://224.1.1.1:1234/com.alibaba.dubbo.registry.RegistryService?application=hello&dubbo=2.5.3&interface=com.alibaba.dubbo.registry.RegistryService&pid=7580&timestamp=1490844195421], dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,653] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.destroy:485] -  [DUBBO] Destroy registry:multicast://224.1.1.1:1234/com.alibaba.dubbo.registry.RegistryService?application=hello&dubbo=2.5.3&interface=com.alibaba.dubbo.registry.RegistryService&pid=7580&timestamp=1490844195421, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,653] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.unregister:312] -  [DUBBO] Unregister: dubbo://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,654] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.broadcast:234] -  [DUBBO] Send broadcast message: unregister dubbo://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472 to /224.1.1.1:1234, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,655] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.destroy:494] -  [DUBBO] Destroy unregister url dubbo://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,655] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.receive:203] -  [DUBBO] Receive multicast message: unregister dubbo://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472 from /10.17.173.30:1234, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,656] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.unsubscribe:343] -  [DUBBO] Unsubscribe: provider://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&category=configurators&check=false&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,657] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.unregister:312] -  [DUBBO] Unregister: provider://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&category=configurators&check=false&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,657] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.broadcast:234] -  [DUBBO] Send broadcast message: unregister provider://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&category=configurators&check=false&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472 to /224.1.1.1:1234, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,658] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.broadcast:234] -  [DUBBO] Send broadcast message: unsubscribe provider://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&category=configurators&check=false&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472 to /224.1.1.1:1234, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,659] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.destroy:510] -  [DUBBO] Destroy unsubscribe url provider://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&category=configurators&check=false&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,660] [INFO ] [com.alibaba.dubbo.rpc.protocol.dubbo.DubboProtocol.destroy:393] -  [DUBBO] Close dubbo server: /10.17.173.30:20003, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,661] [INFO ] [com.alibaba.dubbo.remoting.transport.AbstractServer.close:146] -  [DUBBO] Close NettyServer bind /0.0.0.0:20003, export /10.17.173.30:20003, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,666] [INFO ] [com.alibaba.dubbo.rpc.protocol.dubbo.DubboProtocol.destroy:76] -  [DUBBO] Unexport service: dubbo://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,666] [INFO ] [com.alibaba.dubbo.rpc.protocol.injvm.InjvmProtocol.destroy:76] -  [DUBBO] Unexport service: injvm://127.0.0.1/com.wizard.msg.Message?anyhost=true&application=hello&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472, dubbo version: 2.5.3, current host: 127.0.0.1
+[2017-03-30 11:23:20,658] [INFO ] [com.alibaba.dubbo.registry.multicast.MulticastRegistry.receive:203] -  [DUBBO] Receive multicast message: unregister provider://10.17.173.30:20003/com.wizard.msg.Message?anyhost=true&application=hello&category=configurators&check=false&class=com.wizard.msg.MessageImpl&dubbo=2.5.3&interface=com.wizard.msg.Message&methods=sayHello&pid=7580&side=provider&timestamp=1490844195472 from /10.17.173.30:1234, dubbo version: 2.5.3, current host: 127.0.0.1

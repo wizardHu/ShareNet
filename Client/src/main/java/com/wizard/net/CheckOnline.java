@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.util.HashMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,21 +18,20 @@ public class CheckOnline implements Runnable {
 	
 	private final Logger logger = LoggerFactory.getLogger(CheckOnline.class);
 	
-	private NetworkUtil util;
+	private NetworkUtil util = NetworkUtil.networkUtil;
 	private String ip;
 	private Integer port;
 	private Integer ipCount;
 	
-	public CheckOnline(NetworkUtil util,String ip){
-		this.util = util;
+	public CheckOnline(String ip){
 		this.ip = ip;
 		port = util.getPort();
 		ipCount = util.getIpCount();
 	}
 
 	public void run() {
-		
-		if(!util.isInFindededIp(ip) && util.getOnLineIpSize()<=ipCount){//以前没有查找过
+	
+		if(!util.isInFindededIp(ip) && util.getOnLineIpSize()<=ipCount){//以前没有查找过 并且 在线数量还没到达设置的值
 			find();
 		}
 	}
@@ -41,7 +41,7 @@ public class CheckOnline implements Runnable {
 		SocketAddress address = new InetSocketAddress(ip,port);
 		try {
 			socket.connect(address,500);
-			util.addInOnLineIp(ip);
+			util.addInOnLineIp(ip);//保存到在线的
 			logger.info("CheckOnline==>find ip={}",ip);
 		} catch (IOException e) {
 		}catch (Exception e) {
@@ -53,7 +53,7 @@ public class CheckOnline implements Runnable {
 			}
 		}
 		
-		util.addInFindededIp(ip);
+		util.addInFindededIp(ip);//记录已经查找过的
 	}
 
 }

@@ -15,10 +15,16 @@ import com.alibaba.dubbo.common.utils.ConcurrentHashSet;
 import com.wizard.common.PropertiseUtil;
 import com.wizard.common.SpringUtil;
 
-
+/**
+ * 主要用作记录IP地址以及端口
+ * @author hulujie
+ * @since 2017年4月1日 下午4:49:36
+ */
 public class NetworkUtil {
 
 	private final Logger logger = LoggerFactory.getLogger(NetworkUtil.class);
+	
+	public static final NetworkUtil networkUtil = new NetworkUtil();
 	
 	private String ipFilePath = "address/ip.txt";
 	
@@ -53,6 +59,7 @@ public class NetworkUtil {
 		ipCount = Integer
 				.parseInt(SpringUtil.getSpringContext().getBean(PropertiseUtil.class).getIpCount());
 	}
+	
 	
 	
 	/**

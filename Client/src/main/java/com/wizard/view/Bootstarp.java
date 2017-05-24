@@ -25,6 +25,10 @@ import com.wizard.common.SpringUtil;
 
 public class Bootstarp extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final Logger logger = LoggerFactory.getLogger(Bootstarp.class);
 	private JPanel contentPane;
 	private JPanel panel_left;

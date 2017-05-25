@@ -55,4 +55,9 @@ public class CheckOnline implements Runnable {
 		util.addInFindededIp(ip);//记录已经查找过的
 	}
 
+	
+	public static void main(String[] args) {
+		Thread thread = new Thread(new CheckOnline("10.0.74.208"));
+		thread.start();
+	}
 }
